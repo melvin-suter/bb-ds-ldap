@@ -20,11 +20,14 @@ class CustomIntegration implements IntegrationBase {
     this.ldapPort = config.ldapPort
     this.userDN = config.userDN
     this.password = config.password
-    this.tlsOptions = {}
+    this.tlsOptions = {
+      rejectUnauthorized: false
+    }
 
     if (this.host.startsWith("ldaps://")) {
       this.tlsOptions = {
         minVersion: 'TLSv1.2',
+        rejectUnauthorized: false
       }
     }
 
